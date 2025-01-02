@@ -5,7 +5,6 @@ import ErrorHandler from './utils/ErrorHandler'
 import cors from 'cors'
 
 const app = express()
-const port = 8000
 
 app.use(express.json())
 app.use(cors())
@@ -18,6 +17,12 @@ app.use((_req, _res, next) => {
 
 app.use(errorHandler)
 
-app.listen(port, () => {
-    console.log(`🚀 Example app listening at http://localhost:${port}`)
-})
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(8000, () => {
+        console.log(`🚀 Server listening at http://localhost:8000`)
+    })
+}
+
+// Export for Vercel
+export default app

@@ -9,11 +9,12 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+// Base routes
 app.use('/api/books', booksRouter)
 
-// Test endpoint
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok' })
+// Test route
+app.get('/api', (req, res) => {
+    res.json({ status: 'API is running' })
 })
 
 app.use((_req, _res, next) => {
@@ -22,5 +23,4 @@ app.use((_req, _res, next) => {
 
 app.use(errorHandler)
 
-// Export for Vercel
 export default app

@@ -10,6 +10,7 @@ import swaggerDocument from '../docs/swagger.json'
 
 const router = Router()
 
+// Update the API docs path
 router.use('/api-docs', swaggerUi.serve)
 router.get('/api-docs', swaggerUi.setup(swaggerDocument))
 

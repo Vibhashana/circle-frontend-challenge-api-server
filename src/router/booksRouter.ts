@@ -13,7 +13,7 @@ const router = Router()
 // Update the API docs path
 router.use('/api-docs', swaggerUi.serve)
 router.get('/api-docs', swaggerUi.setup(swaggerDocument))
-
+router.get('/', catchAsyncErrors(getAllBooks))
 router.get('/', catchAsyncErrors(getAllBooks))
 router.get('/:id', catchAsyncErrors(getUniqueBook))
 router.post('/:id/purchase', catchAsyncErrors(purchaseBook))
